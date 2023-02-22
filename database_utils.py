@@ -36,4 +36,3 @@ connect_db = DatabaseConnector()
 cleaned_data = dc.final
 
 connect_db.upload_to_db(cleaned_data, 'dim_users')
-

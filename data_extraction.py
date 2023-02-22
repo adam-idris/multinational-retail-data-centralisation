@@ -2,7 +2,6 @@ import pandas as pd
 import database_utils as du
 
 db_connector = du.DatabaseConnector()
-column_titles = ['first_name', 'last_name', 'date_of_birth', 'company', 'email_address', 'address', 'country', 'country_code', 'phone_number', 'join_date', 'user_uuid']
 
 class DataExtractor:
     

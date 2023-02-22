@@ -1,6 +1,7 @@
 import yaml
 from sqlalchemy import create_engine
 from sqlalchemy import inspect
+import data_cleaning as dc
 
 class DatabaseConnector:
     
@@ -25,7 +26,14 @@ class DatabaseConnector:
     def list_db_tables(self):
         inspector = inspect(self.init_db_engine())
         return inspector.get_table_names()
+    
+    def upload_to_db(self, dataframe, table_name):
+        self.engine = create_engine('postgresql://postgres:mariam@localhost:5432/Sales_Data')
+        connection = self.engine.connect()
+        dataframe.to_sql(table_name, connection, if_exists='replace')
+        
+connect_db = DatabaseConnector()
+cleaned_data = dc.final
 
+connect_db.upload_to_db(cleaned_data, 'dim_users')
 
-readyaml = DatabaseConnector()
-print(readyaml.list_db_tables())

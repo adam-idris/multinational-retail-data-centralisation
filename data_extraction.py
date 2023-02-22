@@ -1,7 +1,8 @@
-import database_utils
 import pandas as pd
+import database_utils as du
 
-db_connector = database_utils.DatabaseConnector()
+db_connector = du.DatabaseConnector()
+column_titles = ['first_name', 'last_name', 'date_of_birth', 'company', 'email_address', 'address', 'country', 'country_code', 'phone_number', 'join_date', 'user_uuid']
 
 class DataExtractor:
     
@@ -11,6 +12,3 @@ class DataExtractor:
 
 extract_table = DataExtractor()
 user_df = extract_table.read_rds_table('legacy_users')
-
-print(user_df['country'].value_counts())
-

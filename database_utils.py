@@ -30,3 +30,5 @@ class DatabaseConnector:
         self.engine = create_engine('postgresql://postgres:mariam030899@localhost:5432/Sales_Data')
         connection = self.engine.connect()
         dataframe.to_sql(table_name, connection, if_exists='replace')
+        
+connectdb = DatabaseConnector()
